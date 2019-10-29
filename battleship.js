@@ -19,6 +19,15 @@ function draw() {
 	background(100);
 	fill(255);	
 	
+	for (var i = 0; i < width; i += width / 10) {
+		for (var j = 0; j < height; j += height / 10) {
+			stroke(0);
+			strokeWeight(1);
+			line(i, 0, i, height);
+			line(0, j, width, j);
+		}
+	}
+	
   ellipse(x, 50, 80, 80);
   if(left) {
 	x += 1;
