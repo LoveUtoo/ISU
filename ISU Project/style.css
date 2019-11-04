@@ -1,0 +1,17 @@
+.container {
+    font-family: 'BioRhyme', serif;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+.nav-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    background-color: beige;
+}
