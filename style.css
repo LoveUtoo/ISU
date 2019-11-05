@@ -1,0 +1,19 @@
+body {
+    background-color: lightgrey;
+    margin: 1;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+    display: flex;
+    font-family: 'BioRhyme', serif;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.left-column:hover {}
