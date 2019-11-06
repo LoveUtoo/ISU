@@ -45,3 +45,18 @@ body {
 .nav-link-wrapper a:hover {
     color: black;
 }
+
+img {
+    border-radius: 8px;
+}
+
+.images {
+    opacity: 1;
+    display: flex;
+    justify-content: space-around;
+    transition: 1s ease;
+}
+
+.images:hover {
+    opacity: 0.3;
+}
