@@ -1,17 +1,47 @@
-.container {
-    font-family: 'BioRhyme', serif;
+body {
+    background-color: lightgrey;
+    margin: 0;
 }
 
-.header{
+.header {
     display: flex;
+    font-family: 'BioRhyme', serif;
     justify-content: center;
     text-transform: uppercase;
 }
-.nav-wrapper{
+
+.nav-wrapper {
     display: flex;
     justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
 }
 
-body {
-    background-color: beige;
+.left-column {
+    display: flex;
+}
+
+.left-column>div {
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+.nav-link-wrapper {
+    height: 22px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.nav-link-wrapper a {
+    color: rgb(143, 125, 125);
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.nav-link-wrapper:hover {
+    border-bottom: 1px solid black;
+}
+
+.nav-link-wrapper a:hover {
+    color: black;
 }
