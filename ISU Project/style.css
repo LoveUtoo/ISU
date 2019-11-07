@@ -1,3 +1,5 @@
+/* Global Styles */
+
 body {
     background-color: lightgrey;
     margin: 0;
@@ -5,16 +7,21 @@ body {
 
 .header {
     display: flex;
-    font-family: 'BioRhyme', serif;
+
+    font-family: 'Baloo Bhai', cursive;
     justify-content: center;
     text-transform: uppercase;
 }
 
+/* Nav Styles */
+
 .nav-wrapper {
+    background-color: rgb(201, 199, 199);
     display: flex;
     justify-content: space-between;
     font-family: 'Open Sans', sans-serif;
     padding: 20px;
+    border-bottom: 1px solid darkgray;
 }
 
 .left-column {
@@ -46,6 +53,7 @@ body {
     color: black;
 }
 
+/* Images Styles and Animations */
 img {
     border-radius: 8px;
 }
@@ -62,4 +70,37 @@ img {
 
 .image:hover {
     opacity: 0.3;
+}
+
+/* Battleship Styles */
+
+.battleship-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    width: 650px;
+    height: 650px;
+    background: black;
+}
+
+.slope-menu {
+    font-family: 'BioRhyme', serif;
+    font-weight: 800;
+    width: 200px;
+    height: 650px;
+    background: darkgray;
+}
+
+form {
+    position: relative;
+    top: 100px;
+}
+
+input[type=text] {
+    width: 70%;
+    background-color: lightgray;
+    border-color: transparent;
+    border-radius: 3px;
 }
