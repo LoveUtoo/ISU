@@ -51,12 +51,15 @@ img {
 }
 
 .images {
-    opacity: 1;
     display: flex;
     justify-content: space-around;
-    transition: 1s ease;
 }
 
-.images:hover {
+.image {
+    opacity: 1;
+    transition: 1s;
+}
+
+.image:hover {
     opacity: 0.3;
 }
