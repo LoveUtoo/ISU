@@ -7,8 +7,7 @@ body {
 
 .header {
     display: flex;
-
-    font-family: 'Baloo Bhai', cursive;
+    font-family: 'Amaranth', sans-serif;
     justify-content: center;
     text-transform: uppercase;
 }
@@ -80,22 +79,37 @@ img {
 }
 
 .grid {
-    width: 650px;
-    height: 650px;
+    width: 800px;
+    height: 800px;
     background: black;
 }
 
 .slope-menu {
-    font-family: 'BioRhyme', serif;
+    position: relative;
+    font-family: 'Amaranth', sans-serif;
     font-weight: 800;
     width: 200px;
-    height: 650px;
+    height: 800px;
     background: darkgray;
 }
 
+.parameters {
+    display: block;
+}
+
+.formula {
+    display: block;
+    text-align: center;
+    justify-content: center;
+}
+
+.instructions {
+    position: absolute;
+    bottom: 10px;
+}
+
 form {
-    position: relative;
-    top: 100px;
+    margin-top: 10px;
 }
 
 input[type=text] {
@@ -103,4 +117,16 @@ input[type=text] {
     background-color: lightgray;
     border-color: transparent;
     border-radius: 3px;
+    margin-right: 20px;
+    float: right;
+}
+
+input[type=button] {
+    font-family: 'Amaranth', sans-serif;
+    margin-right: 25px;
+    float: right;
+    width: 75%;
+    height: 40px;
+    border-color: transparent;
+    border-radius: 5px;
 }
