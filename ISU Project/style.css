@@ -5,8 +5,7 @@ html {
 }
 
 body {
-    height: 100%;
-    background-image: url(https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+    background-color: lightblue;
     margin: 0;
 }
 
@@ -87,6 +86,7 @@ img {
     width: 800px;
     height: 800px;
     background: black;
+    border-radius: 24px;
 }
 
 .slope-menu {
@@ -96,6 +96,7 @@ img {
     width: 200px;
     height: 800px;
     background: darkgray;
+    border-radius: 24px;
 }
 
 .parameters {
