@@ -1,19 +1,18 @@
 /* Global Styles */
 
-html {
-    height: 100%;
-}
-
 body {
-    background-color: lightblue;
+    background-color: gray;
     margin: 0;
 }
 
 .header {
     display: flex;
-    font-family: 'Amaranth', sans-serif;
     justify-content: center;
-    text-transform: uppercase;
+    font-family: 'Amaranth', sans-serif;
+}
+
+.container {
+    position: relative;
 }
 
 /* Nav Styles */
@@ -21,10 +20,13 @@ body {
 .nav-wrapper {
     background-color: rgb(201, 199, 199);
     display: flex;
+    position: sticky;
+    top: 0;
     justify-content: space-between;
     font-family: 'Open Sans', sans-serif;
     padding: 20px;
     border-bottom: 1px solid darkgray;
+    z-index: 1;
 }
 
 .left-column {
@@ -56,26 +58,80 @@ body {
     color: black;
 }
 
-/* Images Styles and Animations */
+/* Home Page Styles */
 img {
     border-radius: 8px;
 }
 
-.images {
+.content-wrapper {
     display: flex;
     justify-content: space-around;
 }
 
-.image {
+.img-item-wrapper {
+    position: relative;
+    opacity: 0.5;
+    transition: 0.5s;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-item-wrapper:hover {
     opacity: 1;
-    transition: 1s;
 }
 
-.image:hover {
-    opacity: 0.3;
+.subtitle {
+    position: absolute;
+    bottom: 10px;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 120%;
+    transition: 0.5s;
+    color: transparent;
+    text-align: center;
+    width: 500px;
 }
 
-/* Battleship Styles */
+.img-item-wrapper:hover .subtitle {
+    color: black;
+}
+
+/* About Page Styles */
+
+.background-image-wrapper {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.background-image {
+    background-image: url(https://i.cbc.ca/1.4649285.1525464147!/fileImage/httpImage/image.jpg_gen/derivatives/original_780/lisgar.jpg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background-image-text-wrapper {
+    position: absolute;
+    top: 64px;
+    display: flex;
+}
+
+.background-image-text {
+    font-family: 'Amaranth', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    margin-left: 55vh;
+    margin-top: 30vh;
+}
+
+.background-image-text>li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+}
+
+/* Battleship Page Styles */
 
 .battleship-grid {
     display: flex;
