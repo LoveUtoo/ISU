@@ -124,6 +124,11 @@ img {
     color: white;
     margin-left: 55vh;
     margin-top: 30vh;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
 .background-image-text>li {
@@ -179,7 +184,7 @@ form {
     margin-top: 10px;
 }
 
-input[type=text] {
+input[type=number] {
     width: 70%;
     background-color: lightgray;
     border-color: transparent;
@@ -199,4 +204,10 @@ input[type=button] {
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
