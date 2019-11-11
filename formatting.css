@@ -22,6 +22,11 @@ body{
 
 #sketch-holder{
 	padding: 500;
-	display: flex;
+	display: flex; 
 	justify-content: center;
+	/*position: relative;*/
+}
+
+nav{
+	padding: 500;
 }
