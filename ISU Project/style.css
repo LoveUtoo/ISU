@@ -1,0 +1,202 @@
+/* Global Styles */
+
+body {
+    background-color: gray;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-family: 'Amaranth', sans-serif;
+}
+
+.container {
+    position: relative;
+}
+
+/* Nav Styles */
+
+.nav-wrapper {
+    background-color: rgb(201, 199, 199);
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    border-bottom: 1px solid darkgray;
+    z-index: 1;
+}
+
+.left-column {
+    display: flex;
+}
+
+.left-column>div {
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+.nav-link-wrapper {
+    height: 22px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.nav-link-wrapper a {
+    color: rgb(143, 125, 125);
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.nav-link-wrapper:hover {
+    border-bottom: 1px solid black;
+}
+
+.nav-link-wrapper a:hover {
+    color: black;
+}
+
+/* Home Page Styles */
+img {
+    border-radius: 8px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.img-item-wrapper {
+    position: relative;
+    opacity: 0.5;
+    transition: 0.5s;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-item-wrapper:hover {
+    opacity: 1;
+}
+
+.subtitle {
+    position: absolute;
+    bottom: 10px;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 120%;
+    transition: 0.5s;
+    color: transparent;
+    text-align: center;
+    width: 500px;
+}
+
+.img-item-wrapper:hover .subtitle {
+    color: black;
+}
+
+/* About Page Styles */
+
+.background-image-wrapper {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.background-image {
+    background-image: url(https://i.cbc.ca/1.4649285.1525464147!/fileImage/httpImage/image.jpg_gen/derivatives/original_780/lisgar.jpg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background-image-text-wrapper {
+    position: absolute;
+    top: 64px;
+    display: flex;
+}
+
+.background-image-text {
+    font-family: 'Amaranth', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    margin-left: 55vh;
+    margin-top: 30vh;
+}
+
+.background-image-text>li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+}
+
+/* Battleship Page Styles */
+
+.battleship-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    width: 800px;
+    height: 800px;
+    background: black;
+    border-radius: 24px;
+}
+
+.slope-menu {
+    position: relative;
+    font-family: 'Amaranth', sans-serif;
+    font-weight: 800;
+    width: 200px;
+    height: 800px;
+    background: darkgray;
+    border-radius: 24px;
+}
+
+.parameters {
+    display: block;
+}
+
+.formula {
+    display: block;
+    text-align: center;
+}
+
+.instructions {
+    position: absolute;
+    bottom: 10px;
+}
+
+.titles {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input[type=text] {
+    width: 70%;
+    background-color: lightgray;
+    border-color: transparent;
+    border-radius: 3px;
+    margin-right: 20px;
+    float: right;
+}
+
+input[type=button] {
+    font-family: 'Amaranth', sans-serif;
+    font-size: 150%;
+    margin-right: 25px;
+    float: right;
+    width: 75%;
+    height: 40px;
+    border-color: transparent;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
