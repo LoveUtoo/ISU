@@ -87,15 +87,15 @@ function draw() { //drawing stuff
     fill(0, 0, 255);
     line(25 + setInitialX(line2), 770 - (ifZero(line2.b) * 75), 25 + (line2.currX * 75), 770 - (line2.currY * 75)); //line 2
 
-    ellipse(20 + (intX * 50), 520 - (intY * 50), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
+    ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
 
 }
 
 function maxValue(l) {
-    if (l.m > 0 && l.m * 10 + Number(l.b) <= 10) {
+    if (l.m > 0 && l.m * 10 + Number(l.b) >= 10) {
         l.maxY = 10;
         l.maxX = (Number(l.maxY) - Number(l.b)) / Number(l.m);
-    } else if (l.m > 0 && l.m * 10 + Number(l.b) > 10) {
+    } else if (l.m > 0 && l.m * 10 + Number(l.b) < 10) {
 		l.maxX = 10;
 		l.maxY = l.m * 10 + Number(l.b);
 	} else if (l.m < 0 && l.m * 10 + Number(l.b) > 0) {
