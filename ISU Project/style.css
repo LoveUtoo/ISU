@@ -179,7 +179,7 @@ form {
     margin-top: 10px;
 }
 
-input[type=text] {
+input[type=number] {
     width: 70%;
     background-color: lightgray;
     border-color: transparent;
