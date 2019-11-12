@@ -60,21 +60,21 @@
                     </div>
                     <form>
                         M=
-                        <input type="number"><br><br>
+                        <input type="number" id="m1"><br><br>
                         B=
-                        <input type="number">
+                        <input type="number" id="b1">
                     </form>
                     <div class="titles">
                         Second Line
                     </div>
                     <form>
                         M=
-                        <input type="number"><br><br>
+                        <input type="number" id="m2"><br><br>
                         B=
-                        <input type="number">
+                        <input type="number" id="b2">
                     </form>
                     <form>
-                        <input type="button" value="FIRE!">
+                        <input type="button" value="FIRE!" onclick="fired()">
                         <input type="button" value="RESET GAME">
                         <input type="button" value="SHOW SHIPS">
                     </form>
@@ -83,6 +83,22 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="guide-wrapper">
+            <div class="titles">
+                <h2>How to find the point of intersection!</h2>
+            </div>
+            1. First we need the equations of the two lines.<br>
+            2. Then, because at the point of intersection the two equations will have the same values of x and y,
+            we
+            set
+            the two
+            equations equal to each other. This gives an equation that we can solve for x.
+            <br>
+            3. Finally, we substitute that x value in one of the line equations (it doesn't matter which) and solve
+            it
+            for y.
         </div>
     </div>
 </body>
