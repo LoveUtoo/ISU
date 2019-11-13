@@ -102,9 +102,6 @@ function maxValue(l) {
 		l.maxX = 10;
 		l.m * 10 + Number(l.b);
 	} else if (l.m < 0 && l.m * 10 + Number(l.b) <= 0) {
-        l.maxY = 0;
-        l.maxX = (Number(l.maxY) - Number(l.b)) / Number(l.m);
-    }
 }
 
 function fired() {
