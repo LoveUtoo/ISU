@@ -5,7 +5,7 @@ body {
     margin: 0;
 }
 
-.header {
+h1 {
     display: flex;
     justify-content: center;
     font-family: 'Amaranth', sans-serif;
@@ -66,6 +66,8 @@ img {
 .content-wrapper {
     display: flex;
     justify-content: space-around;
+    margin-top: 15vh;
+    flex-direction: column;
 }
 
 .img-item-wrapper {
@@ -151,7 +153,8 @@ img {
     width: 200px;
     height: 800px;
     background: darkgray;
-    border-radius: 24px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .parameters {
@@ -169,7 +172,8 @@ img {
 }
 
 canvas {
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .guide-wrapper {
@@ -180,6 +184,7 @@ canvas {
 }
 
 .titles {
+    font-family: 'Amaranth', sans-serif;
     display: block;
     text-align: center;
     text-decoration: underline;
@@ -196,6 +201,11 @@ input[type=number] {
     border-radius: 3px;
     margin-right: 20px;
     float: right;
+    outline: 0;
+}
+
+input[type=number]:focus {
+    background-color: white;
 }
 
 input[type=button] {
@@ -209,6 +219,15 @@ input[type=button] {
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+    outline: 0;
+}
+
+input[type=button]:hover {
+    border-color: black;
+}
+
+input[type=button]:active {
+    background-color: darkgray;
 }
 
 input[type=number]::-webkit-inner-spin-button,
