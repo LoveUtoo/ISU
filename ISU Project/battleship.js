@@ -50,8 +50,8 @@ function windowResized() { //changes location of buttons depending on window siz
 
 function draw() { //drawing stuff
     //Setup grid
-    background(255);
-    fill(255);
+    background(0, 210, 210);
+    fill(0, 139, 139);
 
     textSize(16);
     text(mouseX, 100, 100);
@@ -59,9 +59,9 @@ function draw() { //drawing stuff
     text(line2.maxX, 100, 300);
     text(20 + setInitialX(line1), 100, 400);
     //text(line2.currX, 150, 400);
-    fill(255, 153, 51);
+    fill(255);
 
-    stroke(255, 153, 51);
+    stroke(255);
     strokeWeight(1);
 
     for (var i = 25; i < width; i += 75) {

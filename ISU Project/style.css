@@ -1,7 +1,7 @@
 /* Global Styles */
 
 body {
-    background-color: gray;
+    background-image: url(https://background-tiles.com/overview/blue/patterns/large/1061.png);
     margin: 0;
 }
 
@@ -18,14 +18,15 @@ h1 {
 /* Nav Styles */
 
 .nav-wrapper {
-    background-color: rgb(201, 199, 199);
+    background-color: darkcyan;
+    opacity: 0.9;
     display: flex;
     position: sticky;
     top: 0;
     justify-content: space-between;
     font-family: 'Open Sans', sans-serif;
     padding: 20px;
-    border-bottom: 1px solid darkgray;
+    border-bottom: 1px solid darkcyan;
     z-index: 1;
 }
 
@@ -45,7 +46,7 @@ h1 {
 }
 
 .nav-link-wrapper a {
-    color: rgb(143, 125, 125);
+    color: black;
     text-decoration: none;
     transition: color 0.5s;
 }
@@ -114,30 +115,6 @@ img {
     background-size: cover;
 }
 
-.background-image-text-wrapper {
-    position: absolute;
-    top: 64px;
-    display: flex;
-}
-
-.background-image-text {
-    font-family: 'Amaranth', sans-serif;
-    text-transform: uppercase;
-    color: white;
-    margin-left: 55vh;
-    margin-top: 30vh;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-}
-
-.background-image-text>li {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9em;
-}
-
 /* Battleship Page Styles */
 
 .battleship-grid {
@@ -152,9 +129,10 @@ img {
     font-weight: 800;
     width: 200px;
     height: 800px;
-    background: darkgray;
+    background: darkcyan;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    color: lightcoral;
 }
 
 .parameters {
@@ -181,6 +159,15 @@ canvas {
     font-size: 20px;
     margin-bottom: 40px;
     text-align: center;
+    display: block;
+}
+
+.guide-box-wrapper {
+    background-color: lightcoral;
+    width: 40%;
+    height: 15vh;
+    margin-left: 60vh;
+    border-radius: 10px;
 }
 
 .titles {
@@ -196,16 +183,12 @@ form {
 
 input[type=number] {
     width: 70%;
-    background-color: lightgray;
+    background-color: lightblue;
     border-color: transparent;
     border-radius: 3px;
     margin-right: 20px;
     float: right;
     outline: 0;
-}
-
-input[type=number]:focus {
-    background-color: white;
 }
 
 input[type=button] {
@@ -220,6 +203,7 @@ input[type=button] {
     margin-top: 10px;
     margin-bottom: 10px;
     outline: 0;
+    background-color: lightblue;
 }
 
 input[type=button]:hover {
@@ -227,7 +211,7 @@ input[type=button]:hover {
 }
 
 input[type=button]:active {
-    background-color: darkgray;
+    background-color: rgb(129, 129, 230);
 }
 
 input[type=number]::-webkit-inner-spin-button,
