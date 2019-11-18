@@ -1,14 +1,18 @@
 /* Global Styles */
 
 body {
-    background-image: url(https://background-tiles.com/overview/blue/patterns/large/1061.png);
+    /*background-image: url(https://background-tiles.com/overview/blue/patterns/large/1061.png);
+    */
+    background-color: white;
     margin: 0;
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    font-family: 'Amaranth', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-size: 40px;
 }
 
 .container {
@@ -18,15 +22,14 @@ h1 {
 /* Nav Styles */
 
 .nav-wrapper {
-    background-color: darkcyan;
-    opacity: 0.9;
+    background-color: lightgray;
     display: flex;
     position: sticky;
     top: 0;
     justify-content: space-between;
     font-family: 'Open Sans', sans-serif;
     padding: 20px;
-    border-bottom: 1px solid darkcyan;
+    box-shadow: 0 4px 6px -6px #222;
     z-index: 1;
 }
 
@@ -125,14 +128,21 @@ img {
 
 .slope-menu {
     position: relative;
-    font-family: 'Amaranth', sans-serif;
-    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-weight: 500;
+    font-size: 90%;
     width: 200px;
     height: 800px;
-    background: darkcyan;
+    background: rgb(55, 121, 129);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    color: lightcoral;
+    color: white;
+    z-index: 0;
 }
 
 .parameters {
@@ -155,7 +165,7 @@ canvas {
 }
 
 .guide-wrapper {
-    font-family: 'Amaranth', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     margin-bottom: 40px;
     text-align: center;
@@ -163,15 +173,20 @@ canvas {
 }
 
 .guide-box-wrapper {
-    background-color: lightcoral;
+    background-color: rgb(55, 121, 129);
     width: 40%;
-    height: 15vh;
     margin-left: 60vh;
     border-radius: 10px;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
 .titles {
-    font-family: 'Amaranth', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: block;
     text-align: center;
     text-decoration: underline;
@@ -183,16 +198,21 @@ form {
 
 input[type=number] {
     width: 70%;
-    background-color: lightblue;
+    background-color: rgb(64, 179, 191);
     border-color: transparent;
     border-radius: 3px;
     margin-right: 20px;
     float: right;
     outline: 0;
+
+}
+
+input[type=number] {
+    background-color: rgb(108, 207, 218);
 }
 
 input[type=button] {
-    font-family: 'Amaranth', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 150%;
     margin-right: 25px;
     float: right;
@@ -203,15 +223,21 @@ input[type=button] {
     margin-top: 10px;
     margin-bottom: 10px;
     outline: 0;
-    background-color: lightblue;
+    background-color: rgb(64, 179, 191);
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
 input[type=button]:hover {
-    border-color: black;
+    border-color: white;
 }
 
 input[type=button]:active {
-    background-color: rgb(129, 129, 230);
+    background-color: rgb(108, 207, 218);
 }
 
 input[type=number]::-webkit-inner-spin-button,
