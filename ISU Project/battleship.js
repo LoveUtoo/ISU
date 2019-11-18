@@ -62,8 +62,8 @@ function windowResized() {
 
 function draw() { //drawing stuff
     //Setup grid
-    background(100);
-    fill(100);
+    background(0, 210, 210);
+    fill(0, 139, 139);
 
     textSize(16);
     text(ship[0].x1, 100, 100);
@@ -71,9 +71,9 @@ function draw() { //drawing stuff
     text(ship[0].y1, 100, 300);
     text(ship[0].y2, 100, 400);
     //text(line2.currX, 150, 400);
-    fill(255, 255, 255);
+    fill(255);
 
-    stroke(255, 255, 255);
+    stroke(255);
     strokeWeight(1);
 
     for (var i = 25; i < width; i += 75) { //creating grid
