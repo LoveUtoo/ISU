@@ -11,6 +11,8 @@ let plot;
 let intX = 0; //coords of interception of lines
 let intY = 0;
 let ifFired = false; //if fired bool
+let visible = false;
+let ship = [0, 1, 2, 3, 4];
 
 
 class LINE {
@@ -24,6 +26,16 @@ class LINE {
     }
 }
 
+class BS {
+	contructor() {
+		this.x1 = X1;
+		this.y1 = Y1;
+		this.x2 = X2;
+		this.y2 = Y2;
+		this.alive = true;
+	}
+}
+
 let line1 = new LINE();
 let line2 = new LINE();
 
@@ -34,10 +46,10 @@ function setup() { //setting up stuff
     cnv = createCanvas(800, 800);
     cnv.parent('sketch-holder');
     background(0);
-
+	spawnShips();
 }
 
-function windowResized() { //changes location of buttons depending on window size BECAUSE CREATEINPUT JUST CREATES AN HTML INPUT TAG!!!!!!
+function windowResized() {
     SW = windowWidth / 2;
     SH = windowHeight / 2;
     inputM1.position(SW - 220, 700);
@@ -50,21 +62,21 @@ function windowResized() { //changes location of buttons depending on window siz
 
 function draw() { //drawing stuff
     //Setup grid
-    background(255);
-    fill(255);
+    background(100);
+    fill(100);
 
     textSize(16);
-    text(mouseX, 100, 100);
-    text(line1.maxX, 100, 200);
-    text(line2.maxX, 100, 300);
-    text(20 + setInitialX(line1), 100, 400);
+    text(ship[0].x1, 100, 100);
+    text(ship[0].x2, 100, 200);
+    text(ship[0].y1, 100, 300);
+    text(ship[0].y2, 100, 400);
     //text(line2.currX, 150, 400);
-    fill(255, 153, 51);
+    fill(255, 255, 255);
 
-    stroke(255, 153, 51);
+    stroke(255, 255, 255);
     strokeWeight(1);
 
-    for (var i = 25; i < width; i += 75) {
+    for (var i = 25; i < width; i += 75) { //creating grid
         for (var j = 20; j < height; j += 75) {
             line(i, 20, i, height - 30);
             line(25, j, width - 25, j);
@@ -72,8 +84,14 @@ function draw() { //drawing stuff
         }
         text((height - 25 - i) / 75, 0, i + 5);
     }
+	
+	for (var i = 0; i < 5; i++) {
+		rect(25 + Number(width - ship[i].x1), 770 - Number(ship[i].y1), 25 + Number(width - ship[i].x2), 770 - Number(ship[i].y2));
+		//rect(ship[i].x1, ship[i].y1, ship[i].x2, ship[i].y2);
+		//rect(20, 20, 200, 200);
+	}
 
-    if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) {
+    if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
         ifFired = false;
     }
     increment(line1);
@@ -102,6 +120,9 @@ function maxValue(l) {
 		l.maxX = 10;
 		l.m * 10 + Number(l.b);
 	} else if (l.m < 0 && l.m * 10 + Number(l.b) <= 0) {
+		l.maxY = 0;
+        l.maxX = (Number(l.maxY) - Number(l.b)) / Number(l.m);
+	}
 }
 
 function fired() {
@@ -155,4 +176,26 @@ function setInitialX(l) {
     } else {
         return 0;
     }
+}
+
+function showShips() {
+	if (visible) {
+		visible = false;
+	} else {
+		visible = true;
+	}
+}
+
+function spawnShips() {
+	for (var i = 0; i < 5; i++) {
+		createShip(i);
+	}
+}
+
+function createShip(n) {
+	ship[n] = new BS;
+	ship[n].x1 = Math.floor((Math.random() * 9) + 1) * 75;
+	ship[n].y1 = Math.floor((Math.random() * 9) + 1) * 75;
+	ship[n].x2 = ship[n].x1 + 75;
+	ship[n].y2 = ship[n].y1 + 75;
 }
