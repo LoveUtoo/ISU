@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="nav-link-wrapper">
-                    <a href="battleship.html">Battleships</a>
+                    <a href="battleship.html">Battleship</a>
                 </div>
             </div>
             <div class="right-column">
@@ -34,6 +34,11 @@
         </div>
         <div class="header">
             <h1>Linear Battleships</h1>
+        </div>
+        <div class="bottom-nav-wrapper">
+            <div class="nav-link-wrapper">
+
+            </div>
         </div>
         <div class="battleship-grid">
             <div class="grid" id="sketch-holder"></div>
@@ -72,8 +77,8 @@
                     </form>
                     <form>
                         <input type="button" value="FIRE!" onclick="fired()">
-                        <input type="button" value="RESET GAME">
-                        <input type="button" value="SHOW SHIPS">
+                        <input type="button" value="RESET GAME" onclick="spawnShips()">
+                        <input type="button" value="SHOW SHIPS" onclick="showShips()">
                     </form>
                     <div class="titles">
                         Remaining Ships

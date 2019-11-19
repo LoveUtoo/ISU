@@ -60,6 +60,18 @@ h1 {
     color: black;
 }
 
+.bottom-nav-wrapper {
+    background-color: lightgray;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 1;
+}
+
 /* Home Page Styles */
 img {
     border-radius: 8px;
@@ -69,7 +81,6 @@ img {
     display: flex;
     justify-content: space-around;
     margin-top: 15vh;
-    flex-direction: column;
 }
 
 .img-item-wrapper {
@@ -77,8 +88,6 @@ img {
     opacity: 0.5;
     transition: 0.5s;
     align-items: center;
-    display: flex;
-    flex-direction: column;
 }
 
 .img-item-wrapper:hover {
@@ -98,22 +107,6 @@ img {
 
 .img-item-wrapper:hover .subtitle {
     color: black;
-}
-
-/* About Page Styles */
-
-.background-image-wrapper {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-.background-image {
-    background-image: url(https://p13cdn4static.sharpschool.com/userfiles/servers/server_233510/image/screen%20shot%202018-02-25%20at%203.49.25%20pm.png);
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 /* Battleship Page Styles */

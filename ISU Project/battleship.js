@@ -11,6 +11,10 @@ let plot;
 let intX = 0; //coords of interception of lines
 let intY = 0;
 let ifFired = false; //if fired bool
+let visible = false;
+let ship = [0, 1, 2, 3];
+let visPoint = false;
+let attemps = 0;
 
 
 class LINE {
@@ -24,6 +28,16 @@ class LINE {
     }
 }
 
+class BS {
+    contructor() {
+        this.x1 = X1;
+        this.y1 = Y1;
+        this.x2 = X2;
+        this.y2 = Y2;
+        this.alive = true;
+    }
+}
+
 let line1 = new LINE();
 let line2 = new LINE();
 
@@ -34,10 +48,10 @@ function setup() { //setting up stuff
     cnv = createCanvas(800, 800);
     cnv.parent('sketch-holder');
     background(0);
-
+    spawnShips();
 }
 
-function windowResized() { //changes location of buttons depending on window size BECAUSE CREATEINPUT JUST CREATES AN HTML INPUT TAG!!!!!!
+function windowResized() {
     SW = windowWidth / 2;
     SH = windowHeight / 2;
     inputM1.position(SW - 220, 700);
@@ -50,21 +64,21 @@ function windowResized() { //changes location of buttons depending on window siz
 
 function draw() { //drawing stuff
     //Setup grid
-    background(64, 179, 191);
-    fill(64, 179, 191);
+    background(100);
+    fill(100);
 
     textSize(16);
-    text(mouseX, 100, 100);
-    text(line1.maxX, 100, 200);
-    text(line2.maxX, 100, 300);
-    text(20 + setInitialX(line1), 100, 400);
+    text(ship[0].x1, 100, 100);
+    text(ship[0].x2, 100, 200);
+    text(ship[0].y1, 100, 300);
+    text(ship[0].y2, 100, 400);
     //text(line2.currX, 150, 400);
     fill(255);
 
     stroke(255);
     strokeWeight(1);
 
-    for (var i = 25; i < width; i += 75) {
+    for (var i = 25; i < width; i += 75) { //creating grid
         for (var j = 20; j < height; j += 75) {
             line(i, 20, i, height - 30);
             line(25, j, width - 25, j);
@@ -73,7 +87,15 @@ function draw() { //drawing stuff
         text((height - 25 - i) / 75, 0, i + 5);
     }
 
-    if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) {
+    if (visible) {
+        for (var i = 0; i < 4; i++) {
+            rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
+            //rect(ship[i].x1, ship[i].y1, ship[i].x2, ship[i].y2);
+            //rect(20, 20, 200, 200);
+        }
+    }
+
+    if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
         ifFired = false;
     }
     increment(line1);
@@ -87,7 +109,15 @@ function draw() { //drawing stuff
     fill(0, 0, 255);
     line(25 + setInitialX(line2), 770 - (ifZero(line2.b) * 75), 25 + (line2.currX * 75), 770 - (line2.currY * 75)); //line 2
 
-    ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
+    if (line1.currX >= intX && line2.currX >= intX) {
+        visPoint = true;
+    }
+
+    if (visPoint == true) {
+        stroke(255, 0, 0);
+        fill(255, 0, 0);
+        ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
+    }
 
 }
 
@@ -121,6 +151,8 @@ function fired() {
     line2.currX = ifZero(-1 * line2.b) / line2.m;
     line2.currY = 0;
     ifFired = true;
+    visPoint = false;
+    attemps++;
 }
 
 function increment(l) {
@@ -157,5 +189,49 @@ function setInitialX(l) {
         return ((0 - l.b) / l.m) * 75;
     } else {
         return 0;
+    }
+}
+
+function showShips() {
+    if (visible) {
+        visible = false;
+    } else {
+        visible = true;
+    }
+}
+
+function spawnShips() {
+    for (var i = 0; i < 4; i++) {
+        //var s = Math.floor((Math.random() * 4);
+        var s = 10;
+        createShip(i, s);
+    }
+}
+
+function createShip(n, s) {
+    ship[n] = new BS;
+    if (n == 0) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 4);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 4);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 + 1;
+    }
+    if (n == 1) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 0);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 4);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 + 1;
+    }
+    if (n == 2) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 0);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 1);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 + 1;
+    }
+    if (n == 3) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 4);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 1);
+        ship[n].x2 = ship[n].x1;
+        ship[n].y2 = ship[n].y1;
     }
 }
