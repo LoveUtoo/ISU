@@ -1,9 +1,7 @@
 /* Global Styles */
 
 body {
-    /*background-image: url(https://background-tiles.com/overview/blue/patterns/large/1061.png);
-    */
-    background-color: white;
+    background-image: url(https://background-tiles.com/overview/blue/patterns/large/1061.png);
     margin: 0;
 }
 
@@ -23,6 +21,7 @@ h1 {
 
 .nav-wrapper {
     background-color: lightgray;
+    opacity: 0.9;
     display: flex;
     position: sticky;
     top: 0;
