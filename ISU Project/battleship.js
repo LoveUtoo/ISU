@@ -120,19 +120,15 @@ function draw() { //drawing stuff
     stroke(0, 0, 0);
     fill(0, 0, 0);
     if (visPoint == true) {
-        if (line1.currX == ship[0].x1 && line1.currX == (ship[0].x1 + 75)) {
-            if (line1.currX == ship[0].y1 && line1.currX == (ship[0].y1 + 75)) {
-                stroke(255);
-                fill(255);
-            }
+        if (line1.currX >= ship[0].x1 && line1.currY <= (ship[0].x1 + 75) && line1.currX >= ship[0].y1 && line1.currY <= (ship[0].y1 + 75)) {
+            stroke(255);
+            fill(255);
         } else {
             stroke(0, 0, 0);
             fill(0, 0, 0);
         }
         ellipse(25 + (ship[0].x1 * 75), 770 - (ship[0].y1 * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
     }
-
-
 }
 
 function maxValue(l) {
