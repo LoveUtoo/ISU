@@ -68,10 +68,10 @@ function draw() { //drawing stuff
     fill(100);
 
     textSize(16);
-    text(ship[0].x1, 100, 100);
+    /*text(ship[0].x1, 100, 100);
     text(ship[0].x2, 100, 200);
     text(ship[0].y1, 100, 300);
-    text(ship[0].y2, 100, 400);
+    text(ship[0].y2, 100, 400);*/
     //text(line2.currX, 150, 400);
     fill(255);
 
@@ -87,12 +87,16 @@ function draw() { //drawing stuff
         text((height - 25 - i) / 75, 0, i + 5);
     }
 
+
     if (visible) {
-        for (var i = 0; i < 4; i++) {
+        for (var i = 1; i < 4; i++) {
             rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
             //rect(ship[i].x1, ship[i].y1, ship[i].x2, ship[i].y2);
             //rect(20, 20, 200, 200);
         }
+        fill(255, 0, 0);
+        stroke(255, 0, 0);
+        rect(25 + (ship[0].x1 * 75), 770 - (ship[0].y1 * 75), 75, 75);
     }
 
     if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
@@ -113,11 +117,21 @@ function draw() { //drawing stuff
         visPoint = true;
     }
 
+    stroke(0, 0, 0);
+    fill(0, 0, 0);
     if (visPoint == true) {
-        stroke(255, 0, 0);
-        fill(255, 0, 0);
-        ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
+        if (line1.currX == ship[0].x1 && line1.currX == (ship[0].x1 + 75)) {
+            if (line1.currX == ship[0].y1 && line1.currX == (ship[0].y1 + 75)) {
+                stroke(255);
+                fill(255);
+            }
+        } else {
+            stroke(0, 0, 0);
+            fill(0, 0, 0);
+        }
+        ellipse(25 + (ship[0].x1 * 75), 770 - (ship[0].y1 * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
     }
+
 
 }
 
@@ -143,7 +157,7 @@ function fired() {
     line1.b = Math.round(document.getElementById('b1').value);
     line2.b = Math.round(document.getElementById('b2').value);
     intX = (line2.b - line1.b) / (line1.m - line2.m);
-    intY = line1.m * intX + Number(line1.b); //This cast to number to fix the stupid problem where b1 was a character/string due to stupid js typesafe shit
+    intY = line1.m * intX + Number(line1.b); //This cast to number to fix the stupid problem where b1 was a character/string due to stupid js typesafe
     maxValue(line1);
     maxValue(line2);
     line1.currX = ifZero(-1 * line1.b) / line1.m;
@@ -151,7 +165,6 @@ function fired() {
     line2.currX = ifZero(-1 * line2.b) / line2.m;
     line2.currY = 0;
     ifFired = true;
-    visPoint = false;
     attemps++;
 }
 
