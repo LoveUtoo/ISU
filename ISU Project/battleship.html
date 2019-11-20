@@ -16,14 +16,13 @@
     <title>Battleship</title>
 </head>
 
-<body>
+<body id="battleship-body">
     <div class="container">
         <div class="nav-wrapper">
             <div class="left-column">
                 <div class="nav-link-wrapper">
                     <a href="index.html">Home</a>
                 </div>
-
                 <div class="nav-link-wrapper">
                     <a href="battleship.html">Battleship</a>
                 </div>
@@ -32,29 +31,17 @@
                 <div class="brand">Brenden Hinh and Nicolas Coballe</div>
             </div>
         </div>
-        <div class="header">
-            <h1>Linear Battleships</h1>
-        </div>
         <div class="bottom-nav-wrapper">
-            <div class="nav-link-wrapper">
-
+            <div class="nav-text-wrapper">
+                To contact us please email: bhinh1@ocdsb.ca OR ncoba1@ocdsb.ca
             </div>
         </div>
+        <h1 id="battleship-header">Linear Battleship Game</h1>
         <div class="battleship-grid">
             <div class="grid" id="sketch-holder"></div>
             <div class="slope-menu">
                 <div class="formula">
                     Y = MX + B
-                    <div class="instructions">
-                        <div class="titles">
-                            Tips
-                        </div>
-                        Slope = RISE/RUN
-                        <br>
-                        Slope = (Y2-Y1)/(X2-X1)
-                        <br>
-                        Use the points of intersection of the lines to hit the Battleships!
-                    </div>
                 </div>
                 <div class="paramaters">
                     <div class="titles">
@@ -83,9 +70,11 @@
                     <div class="titles">
                         Remaining Ships
                     </div>
+                    <div class="instructions">
+                        Use the points of intersection of the lines to hit the Battleships!
+                    </div>
                 </div>
             </div>
-
         </div>
         <div class="guide-wrapper">
             <div class="guide-box-wrapper">
@@ -93,7 +82,7 @@
                     <h2>How to find the point of intersection!</h2>
                 </div>
                 <span class="guide">
-                    1. First we need the equations of the two lines.<br>
+                    1. First we need the equations of the two lines. Slope = RISE/RUN OR Slope = (Y2-Y1)/(X2-X1)<br>
                     2. Then, because at the point of intersection the two equations will have the same values of x and
                     y,
                     we
