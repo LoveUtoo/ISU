@@ -15,7 +15,10 @@ let visible = false;
 let ship = [0, 1, 2, 3];
 let visPoint = false;
 let attemps = 0;
+let numShips = 0;
+let shipFlag = [0, 1, 2, 3];
 
+let test = "false"; //variable for testing purposes
 
 class LINE {
     constructor() {
@@ -68,10 +71,10 @@ function draw() { //drawing stuff
     fill(0, 139, 139);
 
     textSize(16);
-    text(ship[0].x1, 100, 100);
-    text(ship[0].x2, 100, 200);
-    text(ship[0].y1, 100, 300);
-    text(ship[0].y2, 100, 400);
+    text(numShips, 100, 100);
+    text(ship[2].y2, 100, 200);
+    text(ship[2].x1, 100, 300);
+    text(ship[2].x2, 100, 400);
     //text(line2.currX, 150, 400);
     fill(255);
 
@@ -87,17 +90,19 @@ function draw() { //drawing stuff
         text((height - 25 - i) / 75, 0, i + 5);
     }
 	
-	if (visible) {
+	if (visible) { //draws the ships
 		for (var i = 0; i < 4; i++) {
+			if (ship[i].alive == false) fill(255, 0, 0);
+			if (ship[i].alive != false) fill(255, 255, 255);
 			rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
-			//rect(ship[i].x1, ship[i].y1, ship[i].x2, ship[i].y2);
-			//rect(20, 20, 200, 200);
+			text(i, 25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75));
 		}
 	}
 
     if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
         ifFired = false;
     }
+	
     increment(line1);
     increment(line2);
 
@@ -109,15 +114,25 @@ function draw() { //drawing stuff
     fill(0, 0, 255);
     line(25 + setInitialX(line2), 770 - (ifZero(line2.b) * 75), 25 + (line2.currX * 75), 770 - (line2.currY * 75)); //line 2
 	
-	if (line1.currX >= intX && line2.currX >= intX) {
+	if (line1.currX >= intX && line2.currX >= intX) { //only drawing the point of interception when the two lines converge
 			visPoint = true;
 	}
 
 	if (visPoint == true) {
 		stroke(255, 0, 0);
-		fill(255, 0, 0);
-		ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //This should be in a separate function eventually if you want the ellipses to stay
+		fill(255, 0, 50);
+		ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //Actually draws the point of interception
+		for (var i = 0; i < 4; i++) {
+			if (intX > ship[i].x1 && intX < ship[i].x2 && intY < ship[i].y1 && intY > ship[i].y2) ship[i].alive = false;
+		}
 	}
+	
+	for (var i = 0; i < 4; i++) { //this sets numShips
+		if (ship[i].alive != false) shipFlag[i] = 1;
+		if (ship[i].alive == false) shipFlag[i] = 0;
+	}
+	
+	numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags
 
 }
 
@@ -138,10 +153,10 @@ function maxValue(l) {
 }
 
 function fired() {
-    line1.m = Math.round(document.getElementById('m1').value);
-    line2.m = Math.round(document.getElementById('m2').value);
-    line1.b = Math.round(document.getElementById('b1').value);
-    line2.b = Math.round(document.getElementById('b2').value);
+    line1.m = document.getElementById('m1').value;
+    line2.m = document.getElementById('m2').value;
+    line1.b = document.getElementById('b1').value;
+    line2.b = document.getElementById('b2').value;
     intX = (line2.b - line1.b) / (line1.m - line2.m);
     intY = line1.m * intX + Number(line1.b); //This cast to number to fix the stupid problem where b1 was a character/string due to stupid js typesafe shit
     maxValue(line1);
@@ -211,27 +226,50 @@ function spawnShips() {
 function createShip(n, s) {
 	ship[n] = new BS;
 	if (n == 0) {
-		ship[n].x1 = Math.floor((Math.random() * 5) + 4);
-		ship[n].y1 = Math.floor((Math.random() * 5) + 4);
+		ship[n].x1 = Math.floor((Math.random() * 4) + 6);
+		ship[n].y1 = Math.floor((Math.random() * 4) + 6);
 		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 + 1;
+		ship[n].y2 = ship[n].y1 - 1;
 	} 
 	if (n == 1) {
 		ship[n].x1 = Math.floor((Math.random() * 5) + 0);
-		ship[n].y1 = Math.floor((Math.random() * 5) + 4);
+		ship[n].y1 = Math.floor((Math.random() * 4) + 6);
 		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 + 1;
+		ship[n].y2 = ship[n].y1 - 1;
 	}
 	if (n == 2) {
-		ship[n].x1 = Math.floor((Math.random() * 5) + 0);
+		ship[n].x1 = Math.floor((Math.random() * 4) + 0);
 		ship[n].y1 = Math.floor((Math.random() * 5) + 1);
 		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 + 1;
+		ship[n].y2 = ship[n].y1 - 1;
 	}
 	if (n == 3) {
-		ship[n].x1 = Math.floor((Math.random() * 5) + 4);
+		ship[n].x1 = Math.floor((Math.random() * 5) + 5);
 		ship[n].y1 = Math.floor((Math.random() * 5) + 1);
-		ship[n].x2 = ship[n].x1;
-		ship[n].y2 = ship[n].y1;
+		ship[n].x2 = ship[n].x1 + 1;
+		ship[n].y2 = ship[n].y1 - 1;
 	}
+}
+
+function resetGame() { //reseting the game
+	line1.m = 0;
+    line2.m = 0;
+    line1.b = 0;
+    line2.b = 0;
+	line1.maxX = 0;
+    line2.maxX = 0;
+    line1.maxY = 0;
+    line2.maxY = 0;
+	line1.currX = 0;
+    line2.currX = 0;
+    line1.currY = 0;
+    line2.currY = 0;
+	
+	intX = 0;
+	intY = 0;
+	
+	spawnShips();
+	
+	attemps = 0;
+	
 }
