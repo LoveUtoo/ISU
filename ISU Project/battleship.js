@@ -98,6 +98,15 @@ function draw() { //drawing stuff
 			text(i, 25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75));
 		}
 	}
+	
+	if (!visible) {
+		for (var i = 0; i < 4; i++) {
+			if (ship[i].alive == false){
+				fill(255, 0, 0);
+				rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
+			}
+		}
+	}
 
     if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
         ifFired = false;
