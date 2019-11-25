@@ -62,7 +62,7 @@
 }
 
 .nav-text-wrapper {
-    color: black;
+    color: white;
 }
 
 .left-column {
@@ -82,18 +82,22 @@
 
 .nav-link-wrapper a {
     /* Removes default line under links */
-    color: black;
+    color: white;
     text-decoration: none;
     transition: color 0.5s;
 }
 
 /* Hover effect for links */
 .nav-link-wrapper:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 
 .nav-link-wrapper a:hover {
-    color: black;
+    color: white;
+}
+
+.brand {
+    color: white;
 }
 
 /* Home Page Styles */
