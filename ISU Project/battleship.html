@@ -16,7 +16,7 @@
     <title>Battleship</title>
 </head>
 
-<body id="battleship-body">
+<body id="battleship-body" onload="displayNumShips()">
     <div class="container">
         <div class="nav-wrapper">
             <div class="left-column">
@@ -70,6 +70,7 @@
                     <div class="titles">
                         Remaining Ships
                     </div>
+                    <span id="number-ships"></span>
                     <div class="instructions">
                         <li> Use the points of intersection of the lines to hit the Battleships!</li>
                         <li>When ships are hit they will turn red.</li>

@@ -203,6 +203,12 @@ canvas {
     text-decoration: underline;
 }
 
+#number-ships {
+    display: flex;
+    justify-content: space-around;
+    font-size: 200px;
+}
+
 form {
     margin-top: 10px;
 }

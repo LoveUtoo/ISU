@@ -133,7 +133,7 @@ function draw() { //drawing stuff
     }
 
     numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags
-
+    document.getElementById("number-ships").innerHTML = numShips;
 }
 
 function maxValue(l) {
@@ -272,4 +272,8 @@ function resetGame() { //reseting the game
 
     attemps = 0;
 
+}
+
+function displayNumShips() {
+    document.getElementById("numberShips").innerHTML = numShips;
 }
