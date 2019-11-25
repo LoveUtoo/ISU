@@ -32,13 +32,13 @@ class LINE {
 }
 
 class BS {
-	contructor() {
-		this.x1 = X1;
-		this.y1 = Y1;
-		this.x2 = X2;
-		this.y2 = Y2;
-		this.alive = true;
-	}
+    contructor() {
+        this.x1 = X1;
+        this.y1 = Y1;
+        this.x2 = X2;
+        this.y2 = Y2;
+        this.alive = true;
+    }
 }
 
 let line1 = new LINE();
@@ -51,7 +51,7 @@ function setup() { //setting up stuff
     cnv = createCanvas(800, 800);
     cnv.parent('sketch-holder');
     background(0);
-	spawnShips();
+    spawnShips();
 }
 
 function windowResized() {
@@ -71,11 +71,12 @@ function draw() { //drawing stuff
     fill(0, 139, 139);
 
     textSize(16);
-    text(numShips, 100, 100);
+    /*text(numShips, 100, 100);
     text(ship[2].y2, 100, 200);
     text(ship[2].x1, 100, 300);
     text(ship[2].x2, 100, 400);
-    //text(line2.currX, 150, 400);
+    //text(line2.currX, 150, 400);*/
+
     fill(255);
 
     stroke(255);
@@ -108,10 +109,21 @@ function draw() { //drawing stuff
 		}
 	}
 
+
+    if (visible) { //draws the ships
+        for (var i = 0; i < 4; i++) {
+            if (ship[i].alive == false) fill(255, 0, 0);
+            if (ship[i].alive != false) fill(255, 255, 255);
+            rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
+            //text(i, 25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75));
+        }
+    }
+
     if (line1.currX >= line1.maxX && line2.currX >= line2.maxX) { //increments line length
         ifFired = false;
     }
-	
+
+
     increment(line1);
     increment(line2);
 
@@ -123,25 +135,27 @@ function draw() { //drawing stuff
     fill(0, 0, 255);
     line(25 + setInitialX(line2), 770 - (ifZero(line2.b) * 75), 25 + (line2.currX * 75), 770 - (line2.currY * 75)); //line 2
 	
-	if (line1.currX >= intX && line2.currX >= intX) { //only drawing the point of interception when the two lines converge
-			visPoint = true;
-	}
 
-	if (visPoint == true) {
-		stroke(255, 0, 0);
-		fill(255, 0, 50);
-		ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //Actually draws the point of interception
-		for (var i = 0; i < 4; i++) {
-			if (intX > ship[i].x1 && intX < ship[i].x2 && intY < ship[i].y1 && intY > ship[i].y2) ship[i].alive = false;
-		}
-	}
-	
-	for (var i = 0; i < 4; i++) { //this sets numShips
-		if (ship[i].alive != false) shipFlag[i] = 1;
-		if (ship[i].alive == false) shipFlag[i] = 0;
-	}
-	
-	numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags
+    if (line1.currX >= intX && line2.currX >= intX) { //only drawing the point of interception when the two lines converge
+        visPoint = true;
+    }
+
+    if (visPoint == true) {
+        stroke(255, 0, 0);
+        fill(255, 0, 50);
+        ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //Actually draws the point of interception
+        for (var i = 0; i < 4; i++) {
+            if (intX > ship[i].x1 && intX < ship[i].x2 && intY < ship[i].y1 && intY > ship[i].y2) ship[i].alive = false;
+        }
+    }
+
+    for (var i = 0; i < 4; i++) { //this sets numShips
+        if (ship[i].alive != false) shipFlag[i] = 1;
+        if (ship[i].alive == false) shipFlag[i] = 0;
+    }
+
+    numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags
+
 
 }
 
@@ -217,68 +231,68 @@ function setInitialX(l) {
 }
 
 function showShips() {
-	if (visible) {
-		visible = false;
-	} else {
-		visible = true;
-	}
+    if (visible) {
+        visible = false;
+    } else {
+        visible = true;
+    }
 }
 
 function spawnShips() {
-	for (var i = 0; i < 4; i++) {
-		//var s = Math.floor((Math.random() * 4);
-		var s = 10;
-		createShip(i, s);
-	}
+    for (var i = 0; i < 4; i++) {
+        //var s = Math.floor((Math.random() * 4);
+        var s = 10;
+        createShip(i, s);
+    }
 }
 
 function createShip(n, s) {
-	ship[n] = new BS;
-	if (n == 0) {
-		ship[n].x1 = Math.floor((Math.random() * 4) + 6);
-		ship[n].y1 = Math.floor((Math.random() * 4) + 6);
-		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 - 1;
-	} 
-	if (n == 1) {
-		ship[n].x1 = Math.floor((Math.random() * 5) + 0);
-		ship[n].y1 = Math.floor((Math.random() * 4) + 6);
-		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 - 1;
-	}
-	if (n == 2) {
-		ship[n].x1 = Math.floor((Math.random() * 4) + 0);
-		ship[n].y1 = Math.floor((Math.random() * 5) + 1);
-		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 - 1;
-	}
-	if (n == 3) {
-		ship[n].x1 = Math.floor((Math.random() * 5) + 5);
-		ship[n].y1 = Math.floor((Math.random() * 5) + 1);
-		ship[n].x2 = ship[n].x1 + 1;
-		ship[n].y2 = ship[n].y1 - 1;
-	}
+    ship[n] = new BS;
+    if (n == 0) {
+        ship[n].x1 = Math.floor((Math.random() * 4) + 6);
+        ship[n].y1 = Math.floor((Math.random() * 4) + 6);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 - 1;
+    }
+    if (n == 1) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 0);
+        ship[n].y1 = Math.floor((Math.random() * 4) + 6);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 - 1;
+    }
+    if (n == 2) {
+        ship[n].x1 = Math.floor((Math.random() * 4) + 0);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 1);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 - 1;
+    }
+    if (n == 3) {
+        ship[n].x1 = Math.floor((Math.random() * 5) + 5);
+        ship[n].y1 = Math.floor((Math.random() * 5) + 1);
+        ship[n].x2 = ship[n].x1 + 1;
+        ship[n].y2 = ship[n].y1 - 1;
+    }
 }
 
 function resetGame() { //reseting the game
-	line1.m = 0;
+    line1.m = 0;
     line2.m = 0;
     line1.b = 0;
     line2.b = 0;
-	line1.maxX = 0;
+    line1.maxX = 0;
     line2.maxX = 0;
     line1.maxY = 0;
     line2.maxY = 0;
-	line1.currX = 0;
+    line1.currX = 0;
     line2.currX = 0;
     line1.currY = 0;
     line2.currY = 0;
-	
-	intX = 0;
-	intY = 0;
-	
-	spawnShips();
-	
-	attemps = 0;
-	
+
+    intX = 0;
+    intY = 0;
+
+    spawnShips();
+
+    attemps = 0;
+
 }
