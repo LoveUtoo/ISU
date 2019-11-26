@@ -1,19 +1,12 @@
-let inputM1;
-let inputM2;
-let inputB1;
-let inputB2;
-let buttonFire;
-let buttonHelp;
-let cnv;
-let SW;
-let SH;
-let plot;
+let cnv; //Canvas
+let SW; //ScreenWidth
+let SH; //ScreenHeight
 let intX = 0; //coords of interception of lines
 let intY = 0;
 let ifFired = false; //if fired bool
-let visible = false;
-let ship = [0, 1, 2, 3];
-let visPoint = false;
+let visible = false; //If ships are visible bool
+let ship = [0, 1, 2, 3]; //Ship objects
+let visPoint = false; //Bool if intersection point is visible
 let attemps = 0;
 let numShips = 0;
 let shipFlag = [0, 1, 2, 3];
@@ -33,11 +26,11 @@ class LINE {
 
 class BS {
     contructor() {
-        this.x1 = X1;
+        this.x1 = X1; //sets coords of ships
         this.y1 = Y1;
         this.x2 = X2;
         this.y2 = Y2;
-        this.alive = true;
+        this.alive = true; //alive bool
     }
 }
 
@@ -45,7 +38,7 @@ let line1 = new LINE();
 let line2 = new LINE();
 
 
-function setup() { //setting up stuff
+function setup() { //setting canvas and such
     SW = windowWidth / 2;
     SH = windowHeight / 2;
     cnv = createCanvas(800, 800);
@@ -54,24 +47,12 @@ function setup() { //setting up stuff
     spawnShips();
 }
 
-function windowResized() {
-    SW = windowWidth / 2;
-    SH = windowHeight / 2;
-    inputM1.position(SW - 220, 700);
-    inputB1.position(SW - 120, 700);
-    inputM2.position(SW - 20, 700);
-    inputB2.position(SW + 80, 700);
-    buttonFire.position(SW + 140, 670);
-
-}
-
 function draw() { //drawing stuff
-    //Setup grid
     background(0, 210, 210);
     fill(0, 139, 139);
 
     textSize(16);
-    /*text(numShips, 100, 100);
+    /*text(numShips, 100, 100); // testing features vvvvvv
     text(ship[2].y2, 100, 200);
     text(ship[2].x1, 100, 300);
     text(ship[2].x2, 100, 400);
@@ -114,16 +95,12 @@ function draw() { //drawing stuff
     fill(0, 0, 255);
     line(25 + setInitialX(line2), 770 - (ifZero(line2.b) * 75), 25 + (line2.currX * 75), 770 - (line2.currY * 75)); //line 2
 
-    if (line1.currX >= intX && line2.currX >= intX) { //only drawing the point of interception when the two lines converge
-        visPoint = true;
-    }
-
-    if (visPoint == true) {
-        stroke(255, 0, 0);
-        fill(255, 0, 50);
+    if (line1.currX >= intX && line2.currX >= intX) {//checks if the lines have intersected
+        stroke(255, 0, 255);
+        fill(255, 0, 255);
         ellipse(25 + (intX * 75), 770 - (intY * 75), 10, 10); //Actually draws the point of interception
         for (var i = 0; i < 4; i++) {
-            if (intX > ship[i].x1 && intX < ship[i].x2 && intY < ship[i].y1 && intY > ship[i].y2) ship[i].alive = false;
+            if (intX > ship[i].x1 && intX < ship[i].x2 && intY < ship[i].y1 && intY > ship[i].y2) ship[i].alive = false; //kills the ship if intercept in on hitbox
         }
     }
 
@@ -132,11 +109,11 @@ function draw() { //drawing stuff
         if (ship[i].alive == false) shipFlag[i] = 0;
     }
 
-    numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags
+    numShips = shipFlag[0] + shipFlag[1] + shipFlag[2] + shipFlag[3]; //summation of all the flags to get ships left
     document.getElementById("number-ships").innerHTML = numShips;
 }
 
-function maxValue(l) {
+function maxValue(l) { //figures out max value for the lines
     if (l.m > 0 && l.m * 10 + Number(l.b) >= 10) {
         l.maxY = 10;
         l.maxX = (Number(l.maxY) - Number(l.b)) / Number(l.m);
@@ -152,7 +129,7 @@ function maxValue(l) {
     }
 }
 
-function fired() {
+function fired() { //button that fires the lines and takes in user input
     line1.m = document.getElementById('m1').value;
     line2.m = document.getElementById('m2').value;
     line1.b = document.getElementById('b1').value;
@@ -170,7 +147,7 @@ function fired() {
     attemps++;
 }
 
-function increment(l) {
+function increment(l) { //function that increments the lines, making them longer
     if (ifFired == true) {
         if (l.currX < l.maxX + 0.05 && l.m > 0) {
             l.currX += 0.05;
@@ -191,7 +168,7 @@ function increment(l) {
     }
 }
 
-function ifZero(n) {
+function ifZero(n) { //function that error checks if certain values are zero or not
     if (n > 0) {
         return n;
     } else {
@@ -199,7 +176,7 @@ function ifZero(n) {
     }
 }
 
-function setInitialX(l) {
+function setInitialX(l) { //sets the initial x coord of the line
     if (l.b < 0) {
         return ((0 - l.b) / l.m) * 75;
     } else {
@@ -207,7 +184,7 @@ function setInitialX(l) {
     }
 }
 
-function showShips() {
+function showShips() { //toggles ship visbility
     if (visible) {
         visible = false;
     } else {
@@ -215,15 +192,14 @@ function showShips() {
     }
 }
 
-function spawnShips() {
+function spawnShips() { //spawns the ships
     for (var i = 0; i < 4; i++) {
-        //var s = Math.floor((Math.random() * 4);
         var s = 10;
         createShip(i, s);
     }
 }
 
-function createShip(n, s) {
+function createShip(n, s) { //makes the ship locations pseudo random
     ship[n] = new BS;
     if (n == 0) {
         ship[n].x1 = Math.floor((Math.random() * 4) + 6);
@@ -251,7 +227,7 @@ function createShip(n, s) {
     }
 }
 
-function resetGame() { //reseting the game
+function resetGame() { //reseting the game; resets all values
     line1.m = 0;
     line2.m = 0;
     line1.b = 0;
@@ -274,6 +250,6 @@ function resetGame() { //reseting the game
 
 }
 
-function displayNumShips() {
+function displayNumShips() { //displays number of ships left
     document.getElementById("numberShips").innerHTML = numShips;
 }
