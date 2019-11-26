@@ -70,6 +70,15 @@ function draw() { //drawing stuff
         }
         text((height - 25 - i) / 75, 0, i + 5);
     }
+	
+	if (!visible) { //keeps hit ship indicator
+		for (var i = 0; i < 4; i++) {
+			if (ship[i].alive == false){
+				fill(255, 0, 0);
+				rect(25 + (ship[i].x1 * 75), 770 - (ship[i].y1 * 75), 75, 75);
+			}
+		}
+	}
 
     if (visible) { //draws the ships
         for (var i = 0; i < 4; i++) {
